@@ -1,0 +1,160 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --neon-green: #10b981;
+    --neon-blue: #3b82f6;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --danger: #ef4444;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--neon-green);
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    margin: 0;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 24px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--text-dim);
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+button {
+    cursor: pointer;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+#login-btn, #start-scan-btn {
+    background: var(--neon-green);
+    color: #064e3b;
+    width: 100%;
+}
+
+#login-btn:hover, #start-scan-btn:hover {
+    background: #34d399;
+    transform: translateY(-1px);
+}
+
+#logout-btn {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid #334155;
+    padding: 6px 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+#reports-container {
+    margin-top: 20px;
+}
+
+.report-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    border-left: 4px solid var(--neon-blue);
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 0 12px 12px 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.delete-btn {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.delete-btn:hover {
+    background: var(--danger);
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-switch {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.auth-switch a {
+    color: #00ff88; /* Твой зеленый цвет */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+
+.hidden {
+    display: none !important;
+}

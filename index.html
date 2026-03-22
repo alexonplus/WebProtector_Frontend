@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebProtector Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ WebProtector</h1>
+            <button id="logout-btn" class="hidden secondary">Logout</button>
+        </header>
+
+        <section id="auth-section">
+            <div id="login-card" class="card">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button id="login-btn">Login</button>
+                <p class="auth-switch">Don't have an account? <a href="#" id="go-to-register">Register here</a></p>
+            </div>
+
+            <div id="register-card" class="card hidden">
+                <h2>Create Account</h2>
+                <input type="text" id="reg-username" placeholder="Choose Username">
+                <input type="password" id="reg-password" placeholder="Choose Password">
+                <button id="register-btn" class="primary">Sign Up</button>
+                <p class="auth-switch">Already have an account? <a href="#" id="go-to-login">Back to Login</a></p>
+            </div>
+        </section>
+
+        <section id="main-section" class="hidden">
+            <div class="card">
+                <h2>Scan Website</h2>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="scan-url" placeholder="https://aftonbladet.se">
+                    <button id="start-scan-btn">Analyze</button>
+                </div>
+            </div>
+            <div id="reports-container"></div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
