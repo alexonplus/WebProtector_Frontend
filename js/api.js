@@ -1,5 +1,5 @@
 // Centralized API configuration
-export const API_URL = "https://localhost:7290/api";
+export const API_URL = "http://localhost:5246/api";
 
 /**
  * Helper to generate request headers.

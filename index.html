@@ -3,45 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebProtector Dashboard</title>
+    <title>WebProtector — Security Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div id="toast-container"></div>
+
     <div class="container">
         <header>
-            <h1>🛡️ WebProtector</h1>
-            <button id="logout-btn" class="hidden secondary">Logout</button>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">WebProtector</span>
+                    <span class="logo-tagline">Security Scanner</span>
+                </div>
+            </div>
+            <button id="logout-btn" class="hidden btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                Sign Out
+            </button>
         </header>
 
         <section id="auth-section">
-            <div id="login-card" class="card">
-                <h2>Login</h2>
-                <input type="text" id="username" placeholder="Username">
-                <input type="password" id="password" placeholder="Password">
-                <button id="login-btn">Login</button>
-                <p class="auth-switch">Don't have an account? <a href="#" id="go-to-register">Register here</a></p>
-            </div>
+            <div class="auth-wrapper">
+                <div class="auth-hero">
+                    <h1>Secure your<br><span class="gradient-text">web presence</span></h1>
+                    <p>Scan any website for security vulnerabilities and get detailed reports instantly.</p>
+                </div>
 
-            <div id="register-card" class="card hidden">
-                <h2>Create Account</h2>
-                <input type="text" id="reg-username" placeholder="Choose Username">
-                <input type="password" id="reg-password" placeholder="Choose Password">
-                <button id="register-btn" class="primary">Sign Up</button>
-                <p class="auth-switch">Already have an account? <a href="#" id="go-to-login">Back to Login</a></p>
+                <div id="login-card" class="card auth-card">
+                    <h2>Welcome back</h2>
+                    <p class="card-subtitle">Sign in to your account</p>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <button id="login-btn" class="btn-primary">
+                        <span>Sign In</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                    <p class="auth-switch">Don't have an account? <a href="#" id="go-to-register">Create one</a></p>
+                </div>
+
+                <div id="register-card" class="card auth-card hidden">
+                    <h2>Create account</h2>
+                    <p class="card-subtitle">Start protecting your websites</p>
+
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <input type="text" id="reg-username" placeholder="Choose a username" autocomplete="username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input type="password" id="reg-password" placeholder="Choose a password" autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <button id="register-btn" class="btn-primary">
+                        <span>Create Account</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                    <p class="auth-switch">Already have an account? <a href="#" id="go-to-login">Sign in</a></p>
+                </div>
             </div>
         </section>
 
         <section id="main-section" class="hidden">
-            <div class="card">
-                <h2>Scan Website</h2>
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" id="scan-url" placeholder="https://aftonbladet.se">
-                    <button id="start-scan-btn">Analyze</button>
+            <div class="scan-hero card">
+                <div class="scan-hero-content">
+                    <h2>Scan a Website</h2>
+                    <p>Enter a URL to analyze its security posture</p>
+                </div>
+                <div class="scan-input-group">
+                    <div class="input-wrapper scan-input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <input type="text" id="scan-url" placeholder="https://example.com">
+                    </div>
+                    <button id="start-scan-btn" class="btn-primary scan-btn">
+                        <span>Analyze</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                        <div class="btn-loader hidden"></div>
+                    </button>
                 </div>
             </div>
-            <div id="reports-container"></div>
+
+            <div id="reports-section">
+                <div class="reports-header">
+                    <h3>Security Reports</h3>
+                    <span id="reports-count" class="badge">0 scans</span>
+                </div>
+                <div id="reports-container"></div>
+                <div id="reports-empty" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <polyline points="9 12 11 14 15 10"/>
+                        </svg>
+                    </div>
+                    <p>No scans yet. Enter a URL above to get started.</p>
+                </div>
+            </div>
         </section>
     </div>
+
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
